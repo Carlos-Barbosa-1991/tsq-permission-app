@@ -80,10 +80,8 @@ public class PermissionReport {
 
     userGroupDetails.forEach(detail -> {
 
-      List<Map<String, String>> higherAutorizations = new ArrayList<>();
-      higherAutorizations.add(new HashMap<>());
-      higherAutorizations.add(new HashMap<>());
-      higherAutorizations.add(new HashMap<>());
+      List<Map<String, String>> higherAutorizations = Arrays
+          .asList(new HashMap<>(), new HashMap<>(), new HashMap<>());
 
       List<List<Map<String, String>>> authorizationsByCondominium = userGroupDetails.stream()
           .filter(info -> info.getCondominiumId().equals(detail.getCondominiumId()))
