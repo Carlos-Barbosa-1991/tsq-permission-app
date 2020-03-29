@@ -39,8 +39,13 @@ public class PermissionReport {
         .map(Group::getGroupType)
         .collect(Collectors.toList());
 
+    List<Integer> userCondominiums = userGroups.stream()
+        .map(Group::getCondominiumId)
+        .collect(Collectors.toList());
+
     List<Group> userGroupDetails = dataBaseGroups.stream()
         .filter(group -> userGroupType.contains(group.getGroupType()))
+        .filter(group -> userCondominiums.contains(group.getCondominiumId()))
         .collect(Collectors.toList());
 
     List<Group> higherPermissionGroups = new ArrayList<>();
